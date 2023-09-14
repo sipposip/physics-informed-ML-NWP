@@ -1,0 +1,28 @@
+\hline 
+ hres base & 542 (7) & 845 (40) & 2.87 (0.09) & 4.11 (0.16)\\
+\hline 
+ hres hemconv & 519 (15) & 785 (24) & 2.73 (0.07) & 3.83 (0.11)\\
+\hline 
+ hres hemconv\_sharedweights & 492 (14) & 767 (26) & 2.61 (0.02) & 3.68 (0.10)\\
+\hline 
+ hres sphereconv & 487 (6) & 773 (8) & 2.64 (0.07) & 3.73 (0.13)\\
+\hline 
+ hres sphereconv\_hemconv & 455 (13) & 736 (28) & 2.57 (0.02) & 3.68 (0.04)\\
+\hline 
+ hres sphereconv\_hemconv\_shared & 415 (6) & 696 (11) & 2.45 (0.05) & 3.53 (0.08)\\
+\hline 
+ lres base & 514 (14) & 788 (26) & 2.75 (0.08) & 3.81 (0.12)\\
+\hline 
+ lres base\_latlon & 520 (17) & 806 (34) & 2.73 (0.03) & 3.82 (0.07)\\
+\hline 
+ lres hemconv & 490 (4) & 773 (6) & 2.69 (0.07) & 3.80 (0.10)\\
+\hline 
+ lres hemconv\_halfsize & 535 (12) & 819 (27) & 2.82 (0.11) & 3.88 (0.16)\\
+\hline 
+ lres hemconv\_sharedweights & 458 (18) & 737 (33) & 2.55 (0.05) & 3.63 (0.07)\\
+\hline 
+ lres sphereconv & 480 (13) & 762 (20) & 2.62 (0.08) & 3.70 (0.14)\\
+\hline 
+ lres sphereconv\_hemconv & 455 (6) & 727 (12) & 2.56 (0.02) & 3.62 (0.02)\\
+\hline 
+ lres sphereconv\_hemconv\_shared & 416 (14) & 699 (35) & 2.50 (0.07) & 3.61 (0.09)\\

@@ -1,0 +1,8 @@
+
+
+5 networks, each trained 4 times for 100-150 epochs
+
+on T4 (tetralith)
+lowres: ~20 mins per epoch --> 1000h on 32 cpus --> 32000 corehours  (maybe less, this was based on the first epoch
+which is slower with tfrecords)
+highres: ~1h per epoch     3000h                  96000 corehours
