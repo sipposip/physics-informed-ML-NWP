@@ -1,5 +1,5 @@
 # Overview
-This repository contains the code for the paper    "Distortion-avoiding convolution and other forms of informed machine learning for deep neural network based weather forecasts"
+This repository contains the code for the paper    "Physics-inspired adaptions to low-parameter neural network weather forecasts systems."
 by Sebastian Scher and Gabriele Messori, under review at AIES.
 
 # Scripts
