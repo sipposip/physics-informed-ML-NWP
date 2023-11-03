@@ -8,14 +8,14 @@ import seaborn as sns
 sns.set(style=None, rc=None ,font_scale=1.2)
 sns.set_palette('colorblind')
 
-# resolution = '2.8125'
+#resolution = '2.8125'
 resolution='1.40625'
 n_train = 4
 
 
 
 nettypes = ['base', 'sphereconv', 'hemconv', 'hemconv_sharedweights', 'sphereconv_hemconv', 'sphereconv_hemconv_shared']
-# nettypes = ['base', 'sphereconv', 'hemconv', 'hemconv_sharedweights', 'sphereconv_hemconv', 'sphereconv_hemconv_shared',
+#nettypes = ['base', 'sphereconv', 'hemconv', 'hemconv_sharedweights', 'sphereconv_hemconv', 'sphereconv_hemconv_shared',
 #             'base_latlon', 'hemconv_halfsize']
 
 
@@ -27,13 +27,13 @@ for nettype in nettypes:
         res.append(df_)
 
 df = pd.concat(res)
-# persistence is the same for all nettypes, so we can take the first one and that it as additional "nettype"
-pers = df_.copy()
-pers = pers.drop(columns=['rmse', 'acc'])
-pers = pers.rename(columns={'rmse_pers':'rmse', 'acc_pers':'acc'})
-pers['nettype'] = 'persistence'
+# # persistence is the same for all nettypes, so we can take the first one and that it as additional "nettype"
+# pers = df_.copy()
+# pers = pers.drop(columns=['rmse', 'acc'])
+# pers = pers.rename(columns={'rmse_pers':'rmse', 'acc_pers':'acc'})
+# pers['nettype'] = 'persistence'
 df = df.drop(columns=['rmse_pers', 'acc_pers'])
-df = pd.concat([df,pers])
+# df = pd.concat([df,pers])
 
 vars = df['var'].unique()
 
@@ -78,16 +78,25 @@ for varname in vars:
     table['varname'] = varname
     table_res.append(table)
 
+
+
+    # the seabron default dash list is not long enough for lowres (where we have more nettypes),
+    #  so we need to manually recreate it here and 
+    # repeat it
+    dash_list = ["", (4, 1.5), (1, 1),
+                      (3, 1, 1.5, 1), (5, 1, 1, 1),
+                      (5, 1, 2, 1, 2, 1),"", (4, 1.5), (1, 1)]
+    dash_list = dash_list[:len(nettypes)]
     plt.figure(figsize=(6,6))
     ax = plt.subplot(211)
-    sns.lineplot('fcday','rmse',hue='nettype', data=sub, alpha=0.9,
+    sns.lineplot('fcday','rmse',hue='nettype', data=sub, alpha=0.9, style='nettype', markers=True, dashes=dash_list,
                  linewidth=0.9, hue_order=nettypes)
     plt.legend(bbox_to_anchor=(0, 1.5), loc="upper left", borderaxespad=0., ncol=2, fontsize=9)
     sns.despine()
     plt.ylabel('RMSE '+unit)
     plt.grid(axis='y', linestyle=':', color='black')
     ax = plt.subplot(212)
-    sns.lineplot('fcday', 'acc', hue='nettype', data=sub, alpha=0.9,
+    sns.lineplot('fcday', 'acc', hue='nettype', data=sub, alpha=0.9, style='nettype', markers=True, dashes=dash_list,
                  linewidth=0.9, hue_order=nettypes)
     sns.despine()
     ax.legend_.remove()
@@ -95,6 +104,7 @@ for varname in vars:
     plt.tight_layout()
     plt.grid(axis='y', linestyle=':', color='black')
     plt.savefig(f'plots/fcskill_base_vs_sphereconv_{resolution}_{varname}.svg')
+
 
     plt.figure(figsize=(6, 6))
     ax = plt.subplot(211)
@@ -126,14 +136,14 @@ for varname in vars:
     sub = sub.reset_index()
     plt.figure(figsize=(6,6))
     ax = plt.subplot(211)
-    sns.lineplot('fcday','rmse',hue='nettype', data=sub, alpha=0.9,
+    sns.lineplot('fcday','rmse',hue='nettype', data=sub, alpha=0.9, style='nettype', markers=True, dashes=dash_list,
                  linewidth=0.9, hue_order=nettypes)
     plt.legend(bbox_to_anchor=(0, 1.5), loc="upper left", borderaxespad=0., ncol=2, fontsize=9)
     sns.despine()
     plt.ylabel('RMSE '+unit)
     plt.grid(axis='y', linestyle=':', color='black')
     ax = plt.subplot(212)
-    sns.lineplot('fcday', 'acc', hue='nettype', data=sub, alpha=0.9,
+    sns.lineplot('fcday', 'acc', hue='nettype', data=sub, alpha=0.9, style='nettype', markers=True, dashes=dash_list,
                  linewidth=0.9, hue_order=nettypes)
     sns.despine()
     ax.legend_.remove()
